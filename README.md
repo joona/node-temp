@@ -94,17 +94,25 @@ temp.mkdir('pdfcreator', function(err, dirPath) {
 ### Temporary Streams
 
 To create a temporary WriteStream, use 'createWriteStream', which sits
-on top of `fs.createWriteStream`. The return value is a
-`fs.WriteStream` whose `path` is registered for removal when
+on top of `fs.createWriteStream`. The object passed to the callback (or returned) has
+`path` and `stream` keys:
+
+```javascript
+{ path: "/path/to/streamtempfile",
+, stream: fs.WriteStream
+}
+```
+
+Stream's `path` is registered for removal when
 `temp.cleanup` is called.
 
 ```javascript
 var temp = require('temp');
 
 var stream = temp.createWriteStream();
-stream.write("Some data");
+stream.stream.write("Some data");
 // Maybe do some other things
-stream.end();
+stream.stream.end();
 ```
 
 ### Affixes
