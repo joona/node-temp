@@ -109,10 +109,10 @@ Stream's `path` is registered for removal when
 ```javascript
 var temp = require('temp');
 
-var stream = temp.createWriteStream();
-stream.stream.write("Some data");
+var ts = temp.createWriteStream();
+ts.stream.write("Some data");
 // Maybe do some other things
-stream.stream.end();
+ts.stream.end();
 ```
 
 ### Affixes
